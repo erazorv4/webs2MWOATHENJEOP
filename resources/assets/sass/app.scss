@@ -1,9 +1,487 @@
-
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);
 
 // Variables
 @import "variables";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// ADD YOUR CSS HERE \/
+
+// menu/nav
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+   /* Margin bottom by footer height */
+   margin-bottom: $footer-height;
+ }
+
+@media (max-width: 991px) {
+  .navbar-header {
+    float: none;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  ul {
+    margin-bottom: 0px;
+    margin-top: 0px !important;
+  }
+
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-collapse.collapse {
+    display: none!important;
+  }
+  .navbar-nav {
+    float: none!important;
+    margin: 7.5px -15px;
+  }
+  .navbar-nav>li {
+    float: none;
+  }
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navbar-text {
+    float: none;
+    margin: 15px 0;
+  }
+  /* since 3.1.0 */
+  .navbar-collapse.collapse.in {
+    display: block !important;
+  }
+  .collapsing {
+    overflow: hidden !important;
+  }
+}
+.navbar-fixed {
+  top: 0;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+}
+
+#nav{
+  text-align: left;
+  font-size: 14px;
+  border-style: solid;
+  border-color: lightgray;
+  background: linear-gradient(to bottom, #ffffff 29%,#d6d6d6 99%);
+
+  ul {
+    margin-bottom: 0px;
+    margin-top: 50px;
+  }
+}
+
+li:hover #dropdown-content {
+  display: block;
+}
+
+#dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: lightgrey;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 80px;
+  text-align: center;
+  z-index: 100;
+}
+#dropdown-content:hover{
+  display: block;
+}
+#nav  a:link {
+  text-decoration: none;
+  color: black;
+}
+
+#nav a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+#nav a:hover {
+  color: black;
+  text-decoration: none;
+  background-color: #b6b7a7;
+  text-align: center;
+}
+
+#nav a:active {
+  color: black;
+  text-decoration: none;
+}
+
+#nav ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+#logo:hover {
+  background-color: transparent !important;
+}
+
+#dropdown-content a
+{
+  display: block;
+}
+
+
+
+// footer
+
+#footer {
+  color: #000;
+  background: linear-gradient(to bottom, #ffffff 29%,#d6d6d6 99%);
+  border-style: solid;
+  border-color: lightgray;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content:center;
+}
+
+#footer-links{
+  display: inline-block;
+  font-size: 24px;
+}
+
+#footer-links ul li{
+  list-style: none;
+}
+
+#footer-links a:link{
+  color: black;
+  text-decoration: none;
+}
+
+#footer-links a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+#footer-links a:visited{
+  color: black;
+  text-decoration: none;
+}
+
+#footer-links a:active{
+  color: black;
+  text-decoration: none;
+}
+
+#footer-images {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+//Archive
+
+.archive-block {
+  display: table-row;
+}
+
+.archive-image {
+  display: table-cell;
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 50px;
+}
+
+.archive-text {
+  display: table-cell;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+.view-more {
+  font-size: 18px;
+  text-align: right;
+}
+
+//Socials
+
+#nav .socials {
+  float: right;
+}
+/* Style all font awesome icons */
+.fa {
+  padding: 10px;
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+// misc
+.icon-bar {
+  background-color: #333333;
+}
+
+/* Styling information about the current Agenda*/
+
+.Agenda_Day {
+  display: block;
+  margin: 15px 15px;
+  padding: 0px;
+  padding-top: 5px;
+  color: #000;
+  font-size: 12px;
+  background: #d2d2d2;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #000;
+}
+
+.Agenda_Day h1 {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.Agenda_timeTable {
+  border: 0px solid black;
+  border-collapse: collapse;
+  text-align: left;
+  margin: 10px 5px 10px 0px;
+  width: auto;
+  display: block;
+}
+
+.Agenda_timeTable_Wrapper {
+  display: block;
+  height: auto;
+  width: 95%;
+  margin: 10px;
+  padding: 0px;
+  overflow: auto;
+}
+
+.Agenda_row {
+  width: 100%;
+}
+
+.Agenda_cell {
+  white-space: nowrap;
+  width: 40px;
+  background: #f3f3f3;
+  border: 0px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0px;
+}
+
+.Agenda_tijd_cell {
+  white-space: nowrap;
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  background: #75507b;
+  border: 0px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0px;
+}
+
+.Agenda_filled_cell {
+  white-space: nowrap;
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  background: #8ae234;
+  border: 0px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0px;
+}
+
+.Agenda_cell_Event {
+  /*position: relative;
+  border-top-width: 1px;
+  margin-top: -1px;
+  */
+  width: auto;
+  max-width: 100%;
+  white-space: nowrap;
+  background: #ad7fa8;
+  border: 1px solid black;
+}
+
+.agenda {
+  margin: 5px;
+  padding: 5px;
+}
+
+.blank_calender_cell {
+  background-color: #4e9a06;
+}
+
+.calender_cell {
+  background-color: #204a87;
+}
+
+.calender_row {
+  background-color: #c4a000;
+  border: 1px solid #c4a000
+}
+
+
+// cms Header
+
+.sidenav {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #EEEEEE;
+  border-right: #aaaaaa solid 1px;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidenav a {
+  padding: 8px 20px 8px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #818181;
+  display: block;
+  transition: 0.3s
+}
+
+a.active {
+  background-color: #00959c;
+  color: #FFFFFF;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+  background-color: #818181;
+  color: #FFFFFF;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 15px;}
+}
+#google-map {
+  width: 80%;
+  height: 400px;
+}
+.auth_links {
+  float: right;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: lightgrey;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 80px;
+  text-align: center;
+  z-index: 1;
+}
+
+.dropdown-menu:hover {
+   background-color: lightgrey;
+ }
+
+#table-style {
+  width: 80%;
+}
+
+#table-header-style {
+  height: 40px;
+  padding: 10px;
+}
+
+#table-row-style {
+  border-bottom: 1px solid black;
+
+}
+
+#table-data-style {
+  padding: 10px;
+}
+
+//Header CMS (The actual page, not to be confused with the CMS Header)
+
+.container-cms
+{
+  margin-left:135px;
+}
+
+.body-cms
+{
+  background: linear-gradient(to bottom, #ffffff 29%,#d6d6d6 99%);
+
+}
+.html-cms
+{
+  min-height: 100%;
+}
+
+.formText
+{
+  width: 150px;
+}
+
+.greenText
+{
+  color: #32CD32;
+  display: inline-block;
+}
+
+.cms-content-wrapper
+{
+  margin-top: 50px;
+  border: solid #aaaaaa 1px;
+  min-height: 75%;
+}

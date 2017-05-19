@@ -1,4 +1,4 @@
-<title>GA Den Bosch - {{ $title }}</title>
+<title>Webshop - {{ $title }}</title>
 
 @section('navigation')
     <script>

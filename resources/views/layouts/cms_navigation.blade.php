@@ -10,10 +10,6 @@
         <a href="{{URL::route('cms_header')}}"
            class="{{ (($currentPage)) == "Navigatie" ? 'active' : ' ' }}"><b>Navigatie</b></a>
 
-        <div id="courseDropdown" class="collapse">
-            <a href="{{URL::route('cms_courses_add')}}"
-            class="{{ (($currentPage)) == "Cursus Toevoegen" ? 'active' : ' ' }}"><b>Toevoegen</b></a>
-        </div>
         <br>
         <br>
         <a href="/"><b>Terug</b></a>

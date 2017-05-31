@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/GrafischAtelierProject.iml" filepath="$PROJECT_DIR$/.idea/GrafischAtelierProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Webs2.iml" filepath="$PROJECT_DIR$/.idea/Webs2.iml" />
       <module fileurl="file://$PROJECT_DIR$/../webs2MWOATHENJEOP/.idea/Webs2.iml" filepath="$PROJECT_DIR$/../webs2MWOATHENJEOP/.idea/Webs2.iml" />
     </modules>
   </component>

@@ -34,12 +34,18 @@ class CategoryTableSeeder extends Seeder
             ),
             array(
                 'id' => 4,
+                'name' => 'Donuts',
+                'parent_id' => 2,
+                'visible' => 1
+            ),
+            array(
+                'id' => 5,
                 'name' => 'Bruin',
                 'parent_id' => 1,
                 'visible' => 1
             ),
             array(
-                'id' => 5,
+                'id' => 6,
                 'name' => 'Wit',
                 'parent_id' => 1,
                 'visible' => 1

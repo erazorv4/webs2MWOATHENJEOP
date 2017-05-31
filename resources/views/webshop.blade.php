@@ -56,9 +56,9 @@ use App\ShopItemNames;
 				
 			
 			@endphp
-		
+
 		</div>
-	
+
 		@include('layouts.footer')
 	</body>
 

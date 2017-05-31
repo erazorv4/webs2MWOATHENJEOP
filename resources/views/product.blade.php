@@ -48,7 +48,7 @@ use App\ShopItemNames;
 			}
 			
 			echo "</div>";
-			
+
 			echo "</div>";
 			
 			@endphp

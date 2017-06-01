@@ -20,9 +20,11 @@ class CreateProductsTable extends Migration
     		$table->double('price');
     		$table->longText('description');
             $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
     	});
+        Schema::table('products', function($table) {
+            $table->foreign('category_id')->references('id')->on('categories');
+        });
     }
 
     /**

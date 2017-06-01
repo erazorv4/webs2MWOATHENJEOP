@@ -21,6 +21,7 @@ use App\ShopItemNames;
         @if ($Id !== null)
             @php
                 $product = App\Product::find($Id);
+            //!! not sure if this is allouwed!!
             @endphp
 
             <h3>{{$product->name}}</h3>

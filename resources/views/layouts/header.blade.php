@@ -68,7 +68,7 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li class="auth_links"><a href="{{ route('register') }}"><b>Registreren</b></a></li>
-                        <li class="auth_links"><a href="{{ route('login') }}"><b>Inloggen</b></a> -</li>
+                        <li class="auth_links"><a href="{{ route('login') }}"><b>Inloggen</b></a></li>
 
                     @else
                         <li class="dropdown auth_links"><b>{{ Auth::user()->name }} <span

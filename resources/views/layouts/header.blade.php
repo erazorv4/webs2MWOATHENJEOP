@@ -18,7 +18,9 @@
 //
 //            });
         });
-
+        $(document).on('click','.navbar-toggle',function(e) {
+            $('.navbar-collapse').collapse('toggle');
+        });
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
@@ -26,7 +28,7 @@
     <nav id="nav" class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <button type="button" class="navbar-toggle">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

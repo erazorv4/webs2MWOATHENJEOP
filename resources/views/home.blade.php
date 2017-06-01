@@ -8,10 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-image: url({{ URL::asset('img/background_bread.jpg') }}); background-size:cover;">
 @include('layouts.header', array('title'=>'Home'))
 <div class="container">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="max-height: 760px; overflow: hidden;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -23,15 +23,15 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
 
-                <img src="http://www.grafisch-atelier-daglicht.nl/images/5226_IMG_5608.jpg" alt="image1">
+                <img src="{{ URL::asset('img/pie_slide.jpg') }}" alt="image1">
             </div>
 
             <div class="item">
-                <img src="http://www.grafisch-atelier-daglicht.nl/images/29426_IMG_4968.jpg" alt="image2">
+                <img src="{{ URL::asset('img/donut_slide.jpg') }}" alt="image2">
             </div>
 
             <div class="item">
-                <img src="https://2.bp.blogspot.com/-l_lsnMMs1Cw/Vxo7uLHqfnI/AAAAAAAAEIA/oqc1qqEm9pYDNVeqNpUOIi6D12us7MbZQCLcB/s1600/MAF-WSzeefdruk-web-06feb16-0221.jpg" alt="image3">
+                <img src="{{ URL::asset('img/bread_slide.jpg') }}" alt="image3">
             </div>
         </div>
 
@@ -45,9 +45,10 @@
             <span class="sr-only">Next</span>
         </a>
 
-    </div><br />
+    </div>
 </div>
 @include('layouts.footer')
+<div></div>
 </body>
 </html>
 

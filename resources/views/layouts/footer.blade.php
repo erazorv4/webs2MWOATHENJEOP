@@ -1,5 +1,5 @@
 @section('footer')
-    <footer id="footer" class="navbar-bottom">
+    <footer id="footer" class="navbar-bottom col-lg-12">
         <div class="row">
             <div id="footer-links" class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                 <ul>

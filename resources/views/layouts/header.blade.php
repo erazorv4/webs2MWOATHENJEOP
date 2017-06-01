@@ -33,10 +33,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" id="logo"> <img src="{{ URL::asset('img/logo_ga.png') }}" width="250px"> </a>
+                <a href="/" id="logo"> <img src="{{ URL::asset('img/logo_bread.png') }}" width="150px"> </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-
                 <div class="socials">
                     <i class="fa fa-facebook" aria-hidden="true"></i>
                     <i class="fa fa-twitter" aria-hidden="true"></i>
@@ -53,17 +52,10 @@
                     @foreach ($NavMainArray as $data)
 
                         @if($data->visible)
-                            <li id="dropdown"><a href="{{URL::route($data->link_as)}}"> <b>{{ $data->name }}</b> </a>
-                                @php
-                                    $MainNavSubcounter += 1;
-                                    if($MainNavSubcounter < $MainNavCount)
-                                    {
-                                    echo "-";
-                                    }
-                                @endphp
-                                @endif
+                            <li class="dropdown"><a href="{{URL::route($data->link_as)}}"> <b>{{ $data->name }}</b> </a>
+                        @endif
 
-                                <div id="dropdown-content">
+                                <div class="dropdown-content">
                                     @foreach($NavSubArray as $subdata)
                                         @if($subdata->parent_id == $data->id && $subdata->visible)
                                             <a href="{{URL::route($subdata->link_as)}}"><b> {{ $subdata->name }}</b></a>
@@ -71,34 +63,34 @@
                                     @endforeach
                                 </div>
                             </li>
-                            @endforeach
+                    @endforeach
 
-                        <!-- Authentication Links -->
-                            @if (Auth::guest())
-                                <li class="auth_links"><a href="{{ route('register') }}"><b>Registreren</b></a></li>
-                                <li class="auth_links"><a href="{{ route('login') }}"><b>Inloggen</b></a> -</li>
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li class="auth_links"><a href="{{ route('register') }}"><b>Registreren</b></a></li>
+                        <li class="auth_links"><a href="{{ route('login') }}"><b>Inloggen</b></a> -</li>
 
-                            @else
-                                <li id="dropdown" class="auth_links"><b>{{ Auth::user()->name }} <span
-                                                class="caret"></span></b>
-                                    <div id="dropdown-content">
-                                        @if (Auth::user()->role == "admin")
-                                            <a href="{{ route('cms_home') }}">
-                                                CMS
-                                            </a>
-                                        @endif
-                                        <a href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Uitloggen
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                              style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </div>
-                                </li>
-                            @endif
+                    @else
+                        <li class="dropdown auth_links"><b>{{ Auth::user()->name }} <span
+                                        class="caret"></span></b>
+                            <div class="dropdown-content">
+                                @if (Auth::user()->role == "admin")
+                                    <a href="{{ route('cms_home') }}">
+                                        CMS
+                                    </a>
+                                @endif
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Uitloggen
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

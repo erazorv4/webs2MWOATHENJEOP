@@ -4,6 +4,26 @@
 
     $formData = $controller->getFormData();
 
+    $categoriesArray = "array(";
+    foreach (\App\Category::all()->where("parent_id", "!=", "null") as $category)
+    {
+        $categoryloopFirst = true;
+        $categoriesArray = $categoriesArray."'".$category."' => array(";
+        foreach (\App\Category::all()->where("parent_id", "=", $category->id) as $subCategory)
+        {
+            if ($categoryloopFirst)
+            {
+                $categoriesArray = $categoriesArray."'".$subCategory."' => '".$subCategory->id."'";
+                $categoryloopFirst = false;
+            }
+            else
+            {
+                $categoriesArray = $categoriesArray.", '".$subCategory."' => '".$subCategory->id."'";
+            }
+        }
+        $categoriesArray = $categoriesArray."),";
+    }
+
 @endphp
         <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="html-cms">
@@ -19,8 +39,8 @@
 @include('layouts.cms_navigation', array('currentPage'=>'cmsProduct'))
 
 <div class="container-cms">
-<br>
-    <h2><b>Nieuw Product<b></b></h2>
+    <br>
+    <h2><b>Nieuw Product</b></h2>
     <br>
 {{ Form::open(['route' => 'create_product']) }}
 
@@ -29,6 +49,8 @@
 
     Naam: {{ Form::text('Name') }} <br><br>
     Prijs: <input type="number" name="Price" min="0"/> <br><br>
+    Categorie: {{ Form::select('Category', $categoriesArray) }}
+    Foto: {{ Form::file('Image') }}<br/><br/>
     Beschrijving <br><br>
     {{ Form::textarea('Description')}} <br>
 

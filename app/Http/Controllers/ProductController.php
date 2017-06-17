@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,7 +17,7 @@ class ProductController extends Controller
 					
 		}
 		
-		Product::Insert(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'description' => $_POST['Description'] ]);
+		Product::Insert(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'category' => $_POST['Category'], 'image' => $_POST['Image'], 'description' => $_POST['Description'] ]);
 		
 		return Redirect::to('cms/product_lijst');
 	}
@@ -28,7 +29,7 @@ class ProductController extends Controller
 			return Redirect::to('cms/product_lijst');
 				
 		}
-		Product::Where('id', '=', $_POST['Id'])->update(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'description' => $_POST['Description'] ]);
+		Product::Where('id', '=', $_POST['Id'])->update(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'category' => $_POST['Category'], 'image' => $_POST['Image'], 'description' => $_POST['Description'] ]);
 		
 		return Redirect::to('cms/product_lijst');
 	}
@@ -37,19 +38,32 @@ class ProductController extends Controller
 	{		
 		$isValid = true;
 		
-		if(!isset($_POST['Name'])){
+		if(!isset($_POST['Name']))
+		{
 			$isValid = false;
 		}
 		
-		if(!isset($_POST['Price'])){
+		if(!isset($_POST['Price']))
+		{
 			$isValid = false;
-		} else {
-			
-			if($_POST['Price'] == ''){
+		}
+		else
+        {
+			if($_POST['Price'] == '')
+			{
 				$isValid = false;
 			}
-			
 		}
+
+        if (!isset($_POST['Category']))
+        {
+            $isValid = false;
+        }
+
+        if (!isset($_POST['Image']))
+        {
+            $isValid = false;
+        }
 		
 		if(!isset($_POST['Description'])){
 			$isValid = false;
@@ -62,6 +76,8 @@ class ProductController extends Controller
 	{				
 		$data['name'] = "";
 		$data['price'] = "0";
+        $date['category'] = "";
+		$date['image'] = "";
 		$data['description'] = "";
 		
 		if($id != -1){
@@ -72,6 +88,8 @@ class ProductController extends Controller
 				
 				$data['name'] = $product->name;
 				$data['price'] = $product->price;
+				$date['category'] = Category::find($product->category_id)->name;
+				$date['image'] = $product->image;
 				$data['description'] = $product->description;
 				
 			}

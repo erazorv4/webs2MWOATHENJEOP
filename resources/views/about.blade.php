@@ -10,9 +10,6 @@
 	</head>
 	<body>
 	@include('layouts.header', array('title'=>'Over Ons'))
-		<div class="title text-center">
-			<h1>Over het Grafisch Atelier Den Bosch</h1>
-		</div>
 
 		<div class="container">
 			<div class="row">

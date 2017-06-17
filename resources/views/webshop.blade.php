@@ -14,18 +14,19 @@ $products = App\Product::all();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body >
 
 @include('layouts.header', array('title'=>'webshop'))
 
-<div class="container">
+<div class="container productcontainer">
     <div class="row">
         @foreach($products as $product)
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                <div class=""></div>
                 <a href="product/{{$product->id}}">
                     <img src="img/WebshopImages/Shop{{$product->id}}.jpg" style="width: 100%;">
-                    <br>
-                    {{$product->name}}
+                    <h3 class="productname">{{$product->name}}</h3>
+
                 </a>
             </div>
         @endforeach

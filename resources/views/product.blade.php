@@ -27,7 +27,7 @@ use App\ShopItemNames;
             <h3>{{$product->name}}</h3>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-                <img src="../img/WebshopImages/Shop{{$Id}}.jpg" style="width: 50%;">
+                <img src="../img/WebshopImages/{{$product->image}}" style="width: 50%;">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                 <br>

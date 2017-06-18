@@ -10,7 +10,7 @@
 </head>
 <body class="body-cms">
 @if (Auth::check() && Auth::user()->role == "admin")
-@include('layouts.cms_navigation', array('currentPage'=>'Header'))
+@include('layouts.cms_navigation', array('currentPage'=>'Navigatie'))
 <div class="container-cms">
     @php
         $NavMainArray = App\HeaderNavigation::getAllNavigationArray();

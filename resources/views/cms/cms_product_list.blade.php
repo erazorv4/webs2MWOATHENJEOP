@@ -16,7 +16,7 @@ $products = App\Product::all();
 </head>
 <body class="body-cms">
 @if (Auth::check() && Auth::user()->role == "admin")
-    @include('layouts.cms_navigation', array('currentPage'=>'cmsProduct'))
+    @include('layouts.cms_navigation', array('currentPage'=>'Shops'))
 
     <div class="container-cms">
 

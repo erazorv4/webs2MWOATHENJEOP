@@ -54,6 +54,7 @@ Route::post('cms/cmsCreateProduct', array('as' => 'create_product', 'uses' => 'P
 Route::post('cms/productbewerker/cmsCreateProduct', array('as' => 'edit_product', 'uses' => 'ProductController@editProduct'));
 
 Route::get('cms/verwijderProduct/{id}', ['uses' => 'ProductController@removeItem']);
+Route::post('cms/proudctImageUpload',array('as' => 'productImageUpload', 'uses' => 'ProductController@upload'));
 
 #----Login & Register Routes----
 Auth::routes();

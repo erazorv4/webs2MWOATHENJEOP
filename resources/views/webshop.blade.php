@@ -19,19 +19,47 @@ $products = App\Product::all();
 @include('layouts.header', array('title'=>'webshop'))
 
 <div class="container productcontainer">
-    <div class="row">
-        @foreach($products as $product)
-            <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-                <div class=""></div>
-                <a href="product/{{$product->id}}">
-                    <img src="img/WebshopImages/Shop{{$product->id}}.jpg" style="width: 100%;">
-                    <h3 class="productname">{{$product->name}}</h3>
+    {{--{{ Form::open(['route' => 'CategoryFilter', 'id' => 'form']) }}--}}
 
-                </a>
-            </div>
-        @endforeach
+    {{--{{ Form::select('filter', $filterOptions, $selectedFilter, array('onchange' => 'sendForm()'))}} <br><br>--}}
+
+    {{--{{ Form::close() }}--}}
+    <div class="row">
+        @php
+            $products = App\Product::all()
+        @endphp
+        <h3 class="title">&nbsp Webshop</h3>
+        @if ($products->count() > 0)
+
+            @foreach($products as $product)
+
+                @php
+                    $productnr = $product->id;
+                    $productTitle = $product->name;
+                    $productPrice = $product->price;
+                    $productDescription = $product->description;
+                    $fileName = URL::asset('img/WebshopImages/'.$product->image);
+                @endphp
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <a href="product/{{$productnr}}">
+                    <img src="{{$fileName}}" style="width: 100%;" data-toggle='modal' data-target="#{{$productnr}}">
+                    <br>
+                    <br>
+                    <b>Productnaam</b>: {{$productTitle}}
+                    <br>
+                    <b>Prijs</b>: &euro;{{ $productPrice }}
+                    <br>
+                    <b>Beschrijving</b>: {{$productDescription}}
+                    <br></a>
+                </div>
+            @endforeach
+        @else
+            <h3>Er zijn geen producten om te laten zien.</h3>
+        @endif
     </div>
 </div>
 @include('layouts.footer')
+<script> function sendForm(){document.getElementById('form').submit()}</script>
 </body>
 </html>

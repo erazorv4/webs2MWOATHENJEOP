@@ -3,26 +3,29 @@
     $controller = new ProductController();
 
     $formData = $controller->getFormData();
+	$categoriesString = "array(";
+	foreach (\App\Category::all()->where("parent_id", "!=", "null") as $category)
+	{
+		$categoryloopFirst = true;
+		$categoriesString = $categoriesString."'".$category->name."' => array(";
+		foreach (\App\Category::all()->where("parent_id", "=", $category->id) as $subCategory)
+		{
+			if ($categoryloopFirst)
+			{
+				$categoriesString = $categoriesString."'".$subCategory->id."' => '".$subCategory->name."'";
+				$categoryloopFirst = false;
+			}
+			else
+			{
+				$categoriesString = $categoriesString.", '".$subCategory->id."' => '".$subCategory->name."'";
+			}
+		}
+		$categoriesString = $categoriesString."),";
+	}
+	$categoriesString = trim($categoriesString, ",");
+    $categoriesString = $categoriesString.")";
 
-    $categoriesArray = "array(";
-    foreach (\App\Category::all()->where("parent_id", "!=", "null") as $category)
-    {
-        $categoryloopFirst = true;
-        $categoriesArray = $categoriesArray."'".$category."' => array(";
-        foreach (\App\Category::all()->where("parent_id", "=", $category->id) as $subCategory)
-        {
-            if ($categoryloopFirst)
-            {
-                $categoriesArray = $categoriesArray."'".$subCategory."' => '".$subCategory->id."'";
-                $categoryloopFirst = false;
-            }
-            else
-            {
-                $categoriesArray = $categoriesArray.", '".$subCategory."' => '".$subCategory->id."'";
-            }
-        }
-        $categoriesArray = $categoriesArray."),";
-    }
+    $categoriesArray = eval("return ".$categoriesString.";");
 
 @endphp
         <!DOCTYPE html>
@@ -36,24 +39,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body class="body-cms">
-@include('layouts.cms_navigation', array('currentPage'=>'cmsProduct'))
+@include('layouts.cms_navigation', array('currentPage'=>'Shops'))
 
 <div class="container-cms">
     <br>
     <h2><b>Nieuw Product</b></h2>
     <br>
-{{ Form::open(['route' => 'create_product']) }}
+{{ Form::open(['route' => 'create_product', 'files' => true]) }}
 
 <!-- hidden "_token" is necessary for laravel, will throw tokenmismatch exception if not included -->
     {{ Form::hidden('_token', csrf_token()) }}
 
-    Naam: {{ Form::text('Name') }} <br><br>
-    Prijs: <input type="number" name="Price" min="0"/> <br><br>
-    Categorie: {{ Form::select('Category', $categoriesArray) }}
-    Foto: {{ Form::file('Image') }}<br/><br/>
+    Naam: {{ Form::text('Name', $formData['name'],array('required' => 'required')) }} <br><br>
+    Prijs: <input type="number" name="Price" min="0" value="{{ $formData['price']}}" step="any" required/> <br>
+    Categorie: {{ Form::select('Category', $categoriesArray, $formData['category_id']) }}<br/><br/>
+    Afbeelding: <input type="file" accept=".jpeg, .jpg, .png" name="Image" value=""> <br>
     Beschrijving <br><br>
-    {{ Form::textarea('Description')}} <br>
-
+    {{ Form::textarea('Description', $formData['description'],array('required' => 'required')) }} <br>
     <input class="btn btn-primary" type="submit" value="Opslaan">
 
     {{ Form::close() }}

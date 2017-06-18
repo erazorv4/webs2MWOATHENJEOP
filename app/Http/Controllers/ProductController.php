@@ -4,33 +4,49 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
 	
-	public function newProduct()
+	public function newProduct(Request $request)
 	{		
 		if(!$this->formValid()){
-					
 			return Redirect::to('cms/product_lijst');
-					
 		}
-		
-		Product::Insert(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'category' => $_POST['Category'], 'image' => $_POST['Image'], 'description' => $_POST['Description'] ]);
-		
+		$this->validate($request, [
+			'Image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+		]);
+
+			$imageName = $request->Image->getClientOriginalName();
+
+			$request->Image->move(public_path('img\WebshopImages'), $imageName);
+
+
+		Product::Insert(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'category_id' => $_POST['Category'], 'image' => $imageName , 'description' => $_POST['Description'] ]);
+
+
 		return Redirect::to('cms/product_lijst');
 	}
 	
-	public function editProduct()
+	public function editProduct(Request $request)
 	{
 		if(!$this->formValid()){
-				
 			return Redirect::to('cms/product_lijst');
-				
 		}
-		Product::Where('id', '=', $_POST['Id'])->update(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'category' => $_POST['Category'], 'image' => $_POST['Image'], 'description' => $_POST['Description'] ]);
-		
+
+		$this->validate($request, [
+			'Image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+		]);
+			$imageName = $request->Image->getClientOriginalName();
+
+			$request->Image->move(public_path('img\WebshopImages'), $imageName);
+
+
+		Product::Where('id', '=', $_POST['Id'])->update(['name' => $_POST['Name'], 'price' =>$_POST['Price'], 'category_id' => $_POST['Category'], 'image' => $imageName, 'description' => $_POST['Description'] ]);
+
 		return Redirect::to('cms/product_lijst');
 	}
 	
@@ -59,11 +75,6 @@ class ProductController extends Controller
         {
             $isValid = false;
         }
-
-        if (!isset($_POST['Image']))
-        {
-            $isValid = false;
-        }
 		
 		if(!isset($_POST['Description'])){
 			$isValid = false;
@@ -73,30 +84,27 @@ class ProductController extends Controller
 	}
 	
 	public function getFormData($id = -1)
-	{				
-		$data['name'] = "";
-		$data['price'] = "0";
-        $date['category'] = "";
-		$date['image'] = "";
-		$data['description'] = "";
+	{
+		$formData['name'] = "";
+		$formData['price'] = "0";
+		$formData['category_id'] = 0;
+		$formData['image'] = "";
+		$formData['description'] = "";
 		
 		if($id != -1){
 			
 			$product = Product::find($id);
-			
+
 			if($product != null){
-				
-				$data['name'] = $product->name;
-				$data['price'] = $product->price;
-				$date['category'] = Category::find($product->category_id)->name;
-				$date['image'] = $product->image;
-				$data['description'] = $product->description;
-				
+
+				$formData['name'] = $product->name;
+				$formData['price'] = $product->price;
+				$formData['category_id'] = $product->category_id;
+				$formData['image'] = $product->image;
+				$formData['description'] = $product->description;
 			}
-			
 		}
-		
-		return $data;
+		return $formData;
 	}
 	
 	public function removeItem($id)
@@ -105,5 +113,11 @@ class ProductController extends Controller
 		
 		return redirect('cms/product_lijst');
 	}
-	
+
+	public function upload()
+	{
+		$file = Input::file('Image');
+		$file->move('uploads', $file->getClientOriginalName());
+	}
+
 }

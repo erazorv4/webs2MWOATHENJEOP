@@ -34,6 +34,10 @@ Route::get('cms/header', ['as' => 'cms_header', 'uses' => 'HeaderNavigationContr
 
 Route::post('cms/header', ['as' => 'cms_header_store', 'uses' => 'HeaderNavigationController@store']);
 
+Route::get('cms/categories', ['as' => 'cms_categories', 'uses' => 'CategoryController@create']);
+
+Route::post('cms/categories', ['as' => 'cms_categories_store', 'uses' => 'CategoryController@store']);
+
 #------Product CMS------
 Route::get('cms/productbewerker/{ProductId}', array('as' => 'product_editor', function ($ProductId) {
     $data = array(

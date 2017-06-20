@@ -29,6 +29,7 @@ $products = App\Product::all();
 
                 <th id="table-header-style">Titel</th>
                 <th id="table-header-style">Prijs</th>
+                <th id="table-header-style">Categorie</th>
                 <th></th>
                 <th></th>
 
@@ -40,6 +41,7 @@ $products = App\Product::all();
 
                     <td id="table-data-style"> {{ $product->name }}</td>
                     <td id="table-data-style"> {{ $product->price }}</td>
+                    <td id="table-data-style"> {{ \App\Category::find($product->category_id)->name }}</td>
 
                     <td>
                         <button type="button" class="btn btn-primary"

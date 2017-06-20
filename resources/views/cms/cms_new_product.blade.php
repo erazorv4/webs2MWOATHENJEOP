@@ -4,7 +4,7 @@
 
     $formData = $controller->getFormData();
 	$categoriesString = "array(";
-	foreach (\App\Category::all()->where("parent_id", "!=", "null") as $category)
+    foreach (\App\Category::all()->where("parent_id", "=", null) as $category)
 	{
 		$categoryloopFirst = true;
 		$categoriesString = $categoriesString."'".$category->name."' => array(";

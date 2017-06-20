@@ -9,7 +9,8 @@
            class="{{ (($currentPage)) == "Shops" ? 'active' : ' ' }}"><b>Shops</b></a>
         <a href="{{URL::route('cms_header')}}"
            class="{{ (($currentPage)) == "Navigatie" ? 'active' : ' ' }}"><b>Navigatie</b></a>
-
+        <a href="{{URL::route('cms_categories')}}"
+           class="{{ (($currentPage)) == "Categories" ? 'active' : ' ' }}"><b>Categories</b></a>
         <br>
         <br>
         <a href="/"><b>Terug</b></a>

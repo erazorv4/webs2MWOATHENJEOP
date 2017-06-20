@@ -19,7 +19,7 @@ class NavigationTableSeeder extends Seeder
                 'name' => 'Webshop',
                 'link_as' => 'winkel',
                 'parent_id' => null,
-                'priority' => 1,
+                'priority' => 3,
                 'visible' => 1
             ),
             array(
@@ -28,6 +28,14 @@ class NavigationTableSeeder extends Seeder
                 'link_as' => 'about',
                 'parent_id' => null,
                 'priority' => 2,
+                'visible' => 1
+            ),
+            array(
+                'id' => 3,
+                'name' => 'Winkelwagen',
+                'link_as' => 'winkelwagen',
+                'parent_id' => null,
+                'priority' => 1,
                 'visible' => 1
             ),
         );

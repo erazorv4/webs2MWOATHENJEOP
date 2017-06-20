@@ -65,6 +65,16 @@
                             </li>
                     @endforeach
 
+                    <!-- Search -->     
+                    <form class="searchBarForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li class="auth_links"><a href="{{ route('register') }}"><b>Registreren</b></a></li>

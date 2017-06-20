@@ -78,10 +78,11 @@ a:hover{
   text-align: left;
   font-size: 14px;
   background-color: #3A3631; }
-  #nav ul {
-    margin-bottom: 0px;
-    margin-top: 50px;
-    padding: 0px;}
+
+#nav ul {
+  margin-bottom: 0px;
+  margin-top: 50px;
+  padding: 0px;}
 
 li:hover .dropdown-content {
   display: block; }
@@ -166,10 +167,19 @@ li:hover .dropdown-content {
   color: #D0A786;
   text-decoration: none; }
 
+.searchBarForm{
+  display: inline-block;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .container {
   background-color: #3A3631;
   opacity: 0.9;
 }
+
+.imageSlideContainer{
+  opacity: 1 !important; }
 
 .productcontainer {
   padding-top: 15px;
@@ -314,7 +324,8 @@ a.active {
   margin-left: 135px; }
 
 .body-cms {
-  background: linear-gradient(to bottom, #ffffff 29%, #d6d6d6 99%); }
+  background-color: #3A3631;
+  background-image: none; }
 
 .html-cms {
   min-height: 100%; }

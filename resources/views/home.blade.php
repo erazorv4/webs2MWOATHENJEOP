@@ -10,7 +10,7 @@
 </head>
 <body>
 @include('layouts.header', array('title'=>'Home'))
-<div class="container">
+<div class="container imageSlideContainer">
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="max-height: 760px; overflow: hidden;">
         <!-- Indicators -->
         <ol class="carousel-indicators">

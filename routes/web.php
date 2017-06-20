@@ -38,6 +38,8 @@ Route::get('cms/categories', ['as' => 'cms_categories', 'uses' => 'CategoryContr
 
 Route::post('cms/categories', ['as' => 'cms_categories_store', 'uses' => 'CategoryController@store']);
 
+Route::post('cms/categories_add', ['as' => 'cms_categories_add', 'uses' => 'CategoryController@addCategory']);
+
 #------Product CMS------
 Route::get('cms/productbewerker/{ProductId}', array('as' => 'product_editor', function ($ProductId) {
     $data = array(

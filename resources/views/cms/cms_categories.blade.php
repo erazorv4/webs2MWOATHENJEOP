@@ -34,13 +34,16 @@
         Zichtbaar {{ Form::checkbox('visible', 1, $data->visible) }}
         Item van {{  Form::select('parent_id', $options, $data->parent_id, array('class' => 'formText'))}}
 
-        <input class="btn btn-primary"  type="submit" name="store" id="store" value="Opslaan">
+        <input class="btn btn-primary" type="submit" name="store" id="store" value="Opslaan">
 
         {{ Form::close() }}
         <br>
 
     @endforeach
 
+    {{ Form::open(['route' => 'cms_categories_add']) }}
+        <input class="btn btn-primary" type="submit" name="addCategory" id="addCategory" value="Nieuwe Categorie"/>
+    {{ Form::close() }}
 
 </div>
 @else

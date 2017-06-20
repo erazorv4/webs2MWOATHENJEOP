@@ -12,21 +12,27 @@ if (isset($formData['image']))
 $categoriesString = "array(";
 foreach (\App\Category::all()->where("parent_id", "=", null) as $category)
 {
-	$categoryloopFirst = true;
-	$categoriesString = $categoriesString."'".$category->name."' => array(";
-	foreach (\App\Category::all()->where("parent_id", "=", $category->id) as $subCategory)
+	if ($category->visible == 1)
 	{
-		if ($categoryloopFirst)
+		$categoryloopFirst = true;
+		$categoriesString = $categoriesString."'".$category->name."' => array(";
+		foreach (\App\Category::all()->where("parent_id", "=", $category->id)->where("visible", "!=", 0) as $subCategory)
 		{
-			$categoriesString = $categoriesString."'".$subCategory->id."' => '".$subCategory->name."'";
-			$categoryloopFirst = false;
+			if ($subCategory->visible == 1)
+			{
+				if ($categoryloopFirst)
+				{
+					$categoriesString = $categoriesString."'".$subCategory->id."' => '".$subCategory->name."'";
+					$categoryloopFirst = false;
+				}
+				else
+				{
+					$categoriesString = $categoriesString.", '".$subCategory->id."' => '".$subCategory->name."'";
+				}
+			}
 		}
-		else
-		{
-			$categoriesString = $categoriesString.", '".$subCategory->id."' => '".$subCategory->name."'";
-		}
+		$categoriesString = $categoriesString."),";
 	}
-	$categoriesString = $categoriesString."),";
 }
 $categoriesString = trim($categoriesString, ",");
 $categoriesString = $categoriesString.")";
@@ -56,7 +62,6 @@ $categoriesArray = eval("return ".$categoriesString.";");
 		<!-- hidden "_token" is necessary for laravel, will throw tokenmismatch exception if not included -->
 			{{ Form::hidden('_token', csrf_token()) }}
 			{{ Form::hidden('Id', $Id) }}
-
 			Naam: {{ Form::text('Name', $formData['name'],array('required' => 'required')) }} <br><br>
 			Prijs: <input type="number" name="Price" min="0" value="{{ $formData['price']}}" step="any" required/> <br>
 			Categorie: {{ Form::select('Category', $categoriesArray, $formData['category_id']) }}<br/><br/>

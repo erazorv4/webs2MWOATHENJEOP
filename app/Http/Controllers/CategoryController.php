@@ -60,4 +60,10 @@ class CategoryController extends Controller
 			return view('cms.cms_categories', ['message' => "Succesvol opgeslagen!"]);
 		}
 	}
+
+	public function addCategory(Request $request)
+	{
+		Category::Insert(['name' => 'nieuwe Category', 'visible' => 1]);
+		return view('cms.cms_categories', ['message' => "Succesvol toegevoegd!"]);
+	}
 }

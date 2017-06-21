@@ -66,8 +66,11 @@
 
 			</div>
 			<div class="row">
+				<div class="shoppingcartTotalPrice">
+					<h3>Totaal: €123</h3>
+				</div>
 				<div class="shoppingcartPayment">
-					<button type="button" class="btn btn-default btn-lg">Betalen</button>
+					<button type="button" class="btn btn-default btn-lg" onclick="window.location='{{ url("payment") }}'">Betalen</button>
 				</div>
 
 			</div>

@@ -28,6 +28,10 @@ Route::get('winkelwagen', array('as' => 'winkelwagen', function () {
     return view('winkelwagen');
 }));
 
+Route::get('payment', array('as' => 'payment', function () {
+    return view('payment');
+}));
+
 Route::get('cms', array('as' => 'cms_home', function () {
     return view('cms.cms_home');
 }));

@@ -65,7 +65,7 @@
                             </li>
                     @endforeach
 
-                    <!-- Search -->     
+                    <!-- Search -->
                     <form class="searchBarForm">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search for...">

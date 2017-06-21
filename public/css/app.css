@@ -107,21 +107,17 @@ li:hover .dropdown-content {
   display: block; }
 
 #nav a:link {
-  text-decoration: none;
-  color: black; }
+  text-decoration: none; }
 
 #nav a:visited {
-  text-decoration: none;
-  color: black; }
+  text-decoration: none; }
 
 #nav li:hover {
-  color: black;
   text-decoration: none;
   background-color: black;
   text-align: center; }
 
 #nav a:active {
-  color: black;
   text-decoration: none; }
 
 #nav ul li {
@@ -190,6 +186,33 @@ li:hover .dropdown-content {
   margin: 5px auto 20px auto;
   text-align: center;
 }
+
+.shoppingcartProducts{
+  width: 80%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.shoppingcartProducts div {
+  border-bottom: 1px solid #D0A786;
+  margin-top: 10px;
+}
+
+.divRight{
+  text-align: right;
+}
+
+.shoppingcartAmount{
+  height: 20px;
+  width: 50px;
+}
+
+.shoppingcartPayment{
+  width: 90%;
+  text-align: right;
+  padding-bottom: 30px;
+}
+
 .no_bg{
   background-color: transparent !important;
   opacity: 1 !important;}

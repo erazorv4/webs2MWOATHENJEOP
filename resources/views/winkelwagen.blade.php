@@ -17,64 +17,54 @@
 					<h1 class="text-center">Mijn winkelwagen</h1>
 				</div>
 			</div>
-			<div class="row shoppingcartProducts">
 
+
+			@if(!empty(session('shopping_cart')))
+			<div class="shoppingcartProducts">
+                <?php $total = 0 ?>
+				@foreach(session('shopping_cart') as $key => $item)
+					<div class="row">
 				<!-- winkelwagen item -->
-				<div class="col-md-4 col-sm-6">
-					<p><b>MWOAHTENBROT</b></p>
-				</div>
-				<div class="col-md-3 col-sm-2 divRight">
-					<p><b>Aantal: </b><input class="shoppingcartAmount" type="number" min="1" /></p>
-				</div>
-				<div class="col-md-3 col-sm-4 divRight">
-					<p><b>Totaal Prijs: </b>€12,99</p>
-				</div>
-				<div class="col-md-2 divRight">
-					<p><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></p>
-				</div>
-				<!-- eind winkelwagen item -->
+					<div class="col-md-4 col-sm-6">
+						<p><b>{{ $item[1] }}</b></p>
+					</div>
+					<div class="col-md-3 col-sm-2 divRight">
+						<form method="post" action="{{ route('EditItem', $key) }}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<p>
+								<b>Aantal: </b><input class="shoppingcartAmount" name="quantity" type="number" min="1" value="{{ $item[3] }}" />
+								<input type="submit" value="Opslaan"/>
+							</p>
+						</form>
 
-				<!-- winkelwagen item -->
-				<div class="col-md-4 col-sm-6">
-					<p><b>MWOAHTENBROT</b></p>
-				</div>
-				<div class="col-md-3 col-sm-2 divRight">
-					<p><b>Aantal: </b><input class="shoppingcartAmount" type="number" min="1" /></p>
-				</div>
-				<div class="col-md-3 col-sm-4 divRight">
-					<p><b>Totaal Prijs: </b>€12,99</p>
-				</div>
-				<div class="col-md-2 divRight">
-					<p><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></p>
-				</div>
-				<!-- eind winkelwagen item -->
+					</div>
 
-				<!-- winkelwagen item -->
-				<div class="col-md-4 col-sm-6">
-					<p><b>MWOAHTENBROT</b></p>
-				</div>
-				<div class="col-md-3 col-sm-2 divRight">
-					<p><b>Aantal: </b><input class="shoppingcartAmount" type="number" min="1" /></p>
-				</div>
-				<div class="col-md-3 col-sm-4 divRight">
-					<p><b>Totaal Prijs: </b>€12,99</p>
-				</div>
-				<div class="col-md-2 divRight">
-					<p><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></p>
-				</div>
-				<!-- eind winkelwagen item -->
-
+					<div class="col-md-3 col-sm-4 divRight">
+						<p><b>Totaal Prijs: </b>{{ $item[2] * $item[3] }}</p>
+					</div>
+					<div class="col-md-2 divRight">
+						<p><a href="{{ route('RemoveItem', $key) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></p>
+					</div>
+					<!-- eind winkelwagen item -->
+                    <?php $total = $total + ($item[2] * $item[3]) ?>
+					</div>
+				@endforeach
 			</div>
-			<div class="row">
-				<div class="shoppingcartTotalPrice">
-					<h3>Totaal: €123</h3>
-				</div>
-				<div class="shoppingcartPayment">
-					<button type="button" class="btn btn-default btn-lg" onclick="window.location='{{ url("payment") }}'">Betalen</button>
-				</div>
+					<div class="row">
+						<div class="shoppingcartTotalPrice">
+							<h3>Totaal: {{ number_format($total, 2) }}</h3>
+						</div>
+						<div class="shoppingcartPayment">
+							<form method="post" action="{{ route('PurchaseItems') }}">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+								<input type="submit" name="purchase" style="margin-top:5px;" class="btn btn-success" value="Purchase" />
+							</form>
+						</div>
 
-			</div>
-
+					</div>
+				@else
+				<p>Je hebt nog geen producten in je winkelwagen!</p>
+			@endif
 		</div>
 	@include('layouts.footer')
 	</body>

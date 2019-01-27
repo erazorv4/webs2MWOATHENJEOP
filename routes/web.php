@@ -24,13 +24,13 @@ Route::get('winkel', array('as' => 'winkel', function () {
     return view('webshop');
 }));
 
-Route::get('winkelwagen', array('as' => 'winkelwagen', function () {
-    return view('winkelwagen');
-}));
+//Route::get('winkelwagen', array('as' => 'winkelwagen', function () {
+//   return view('winkelwagen');
+//}));
 
-Route::get('payment', array('as' => 'payment', function () {
+/*Route::get('payment', array('as' => 'payment', function () {
     return view('payment');
-}));
+}));*/
 
 Route::get('cms', array('as' => 'cms_home', function () {
     return view('cms.cms_home');
@@ -74,3 +74,9 @@ Route::post('cms/proudctImageUpload',array('as' => 'productImageUpload', 'uses' 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+#----Shoppingcart Routes----
+Route::get('/winkelwagen', array('as' => 'winkelwagen', 'uses' => 'WinkelwagenController@index'));
+Route::post('/AddToCart', array('as' => 'AddToCart', 'uses' => 'WinkelwagenController@AddToCart'));
+Route::post('/EditItem/{key}', array('as' => 'EditItem', 'uses' => 'WinkelwagenController@EditItem'));
+Route::get('/winkelmandje/{key}', array('as' => 'RemoveItem','uses' => 'WinkelwagenController@RemoveItem'));
+Route::post('/payment', array('as' => 'PurchaseItems','uses' => 'WinkelwagenController@PurchaseItems'));

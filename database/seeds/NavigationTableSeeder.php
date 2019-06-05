@@ -32,7 +32,7 @@ class NavigationTableSeeder extends Seeder
             ),
             array(
                 'id' => 3,
-                'name' => 'WinkelwagenController',
+                'name' => 'Winkelwagen',
                 'link_as' => 'winkelwagen',
                 'parent_id' => null,
                 'priority' => 1,

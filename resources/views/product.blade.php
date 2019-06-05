@@ -23,7 +23,7 @@ use App\ShopItemNames;
                 $product = App\Product::find($Id);
             @endphp
 
-            <h3>{{$product->name}}</h3>
+            <h3><a href="{{URL::route("winkel")}}">Webshop</a> -> {{$product->name}}</h3>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                 <img src="../img/WebshopImages/{{$product->image}}" style="width: 100%;">

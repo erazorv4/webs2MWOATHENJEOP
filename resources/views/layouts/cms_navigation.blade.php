@@ -6,11 +6,11 @@
         <a href="{{URL::route('cms_home')}}" class="{{ (($currentPage)) == "Home" ? 'active' : ' ' }}"><b>Home</b></a>
         <br/>
         <a href="{{URL::route('cms_product_list')}}"
-           class="{{ (($currentPage)) == "Producten" ? 'active' : ' ' }}"><b>Shops</b></a>
+           class="{{ (($currentPage)) == "Producten" ? 'active' : ' ' }}"><b>Producten</b></a>
         <a href="{{URL::route('cms_header')}}"
            class="{{ (($currentPage)) == "Navigatie" ? 'active' : ' ' }}"><b>Navigatie</b></a>
         <a href="{{URL::route('cms_categories')}}"
-           class="{{ (($currentPage)) == "Categorieën" ? 'active' : ' ' }}"><b>Categories</b></a>
+           class="{{ (($currentPage)) == "Categorieën" ? 'active' : ' ' }}"><b>Categorieën</b></a>
         <br>
         <br>
         <a href="/"><b>Terug</b></a>

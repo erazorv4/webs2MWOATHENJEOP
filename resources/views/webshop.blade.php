@@ -52,6 +52,16 @@ $products = App\Product::all();
                     <br>
                     <b>Beschrijving</b>: {{$productDescription}}
                     <br></a>
+                    <form method="post" action="{{ route('AddToCart') }}">
+                        <input type="hidden" name="_token" value=" {{ csrf_token() }} ">
+                        <input type="hidden" name="name" value="{{ $productTitle }}" />
+                        <input type="hidden" name="price" value="{{ $productPrice }}" />
+                        <div class="btn-group cart">
+                            <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="id" value="{{ $productnr }}" />
+                            <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
+                        </div>
+                    </form>
                 </div>
             @endforeach
         @else

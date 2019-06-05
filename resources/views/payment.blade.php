@@ -25,13 +25,13 @@
 							<p><b>Aantal: </b>{{ $item[3] }}</p>
 						</div>
 						<div class="col-md-3 col-sm-4 divRight">
-							<p><b>Totaal Prijs: </b>{{ $item[2] * $item[3] }}</p>
+							<p><b>Totaal Prijs: € </b>{{ $item[2] * $item[3] }}</p>
 						</div>
 						<!-- eind winkelwagen item -->
                         <?php $total = $total + ($item[2] * $item[3]) ?>
 					@endforeach
 					<div class="shoppingcartTotalPrice">
-						<h3>Totaal: {{ number_format($total, 2) }}</h3>
+						<h3>Totaal: € {{ number_format($total, 2) }}</h3>
 					</div>
 					<?php session()->forget('shopping_cart') ?>
 					@endif

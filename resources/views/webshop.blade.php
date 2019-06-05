@@ -27,17 +27,22 @@ use App\ShopItemNames;
         <?php
             $products = array();
             $allProducts = App\Product::all();
-            $query = $_GET['query'];
+            if (isset($_GET['query'])) {
+                $query = $_GET['query'];
 
-            if($query != nullOrEmptyString()) {
-                $query = strtolower($query);
-                foreach($allProducts as $product) {
-                    if (strpos(strtolower($product->name), $query) !== false || strpos(strtolower($product->description), $query) !== false) {
-                        array_push($products, $product);
+                if($query != nullOrEmptyString()) {
+                    $query = strtolower($query);
+                    foreach($allProducts as $product) {
+                        if (strpos(strtolower($product->name), $query) !== false || strpos(strtolower($product->description), $query) !== false) {
+                            array_push($products, $product);
+                        }
                     }
+                } else {
+                    $products = $allProducts;
                 }
-            } else {
-                $products = $allProducts;
+            }
+            else{
+            	$products = $allProducts;
             }
         ?>
         @if (count($products) > 0)
@@ -45,11 +50,13 @@ use App\ShopItemNames;
             @foreach($products as $product)
 
                 @php
-                    $productnr = $product->id;
-                    $productTitle = $product->name;
-                    $productPrice = $product->price;
-                    $productDescription = $product->description;
-                    $fileName = URL::asset('img/WebshopImages/'.$product->image);
+                    $subcategory = App\Category::find($product->category_id);
+					$category = App\Category::find($subcategory->parent_id);
+						$productnr = $product->id;
+						$productTitle = $product->name;
+						$productPrice = $product->price;
+						$productDescription = $product->description;
+						$fileName = URL::asset('img/WebshopImages/'.$product->image);
                 @endphp
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
@@ -58,6 +65,8 @@ use App\ShopItemNames;
                     <br>
                     <br>
                     <b>Productnaam</b>: {{$productTitle}}
+                    <br>
+                    <b>Category</b>: {{$category->name}} / {{$subcategory->name}}
                     <br>
                     <b>Prijs</b>: &euro;{{ $productPrice }}
                     <br>

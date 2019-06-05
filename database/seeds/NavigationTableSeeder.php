@@ -14,8 +14,16 @@ class NavigationTableSeeder extends Seeder
         DB::table('header_navigations')->delete();
 
         $header_navigation = array(
+	        array(
+		        'id' => 1,
+		        'name' => 'Home',
+		        'link_as' => 'home',
+		        'parent_id' => null,
+		        'priority' => 4,
+		        'visible' => 1
+	        ),
             array(
-                'id' => 1,
+                'id' => 2,
                 'name' => 'Webshop',
                 'link_as' => 'winkel',
                 'parent_id' => null,
@@ -23,7 +31,7 @@ class NavigationTableSeeder extends Seeder
                 'visible' => 1
             ),
             array(
-                'id' => 2,
+                'id' => 3,
                 'name' => 'Over ons',
                 'link_as' => 'about',
                 'parent_id' => null,
@@ -31,7 +39,7 @@ class NavigationTableSeeder extends Seeder
                 'visible' => 1
             ),
             array(
-                'id' => 3,
+                'id' => 4,
                 'name' => 'Winkelwagen',
                 'link_as' => 'winkelwagen',
                 'parent_id' => null,

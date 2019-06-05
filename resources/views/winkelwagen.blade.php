@@ -40,7 +40,7 @@
 					</div>
 
 					<div class="col-md-3 col-sm-4 divRight">
-						<p><b>Totaal Prijs: </b>{{ $item[2] * $item[3] }}</p>
+						<p><b>Totaal Prijs: € </b>{{ $item[2] * $item[3] }}</p>
 					</div>
 					<div class="col-md-2 divRight">
 						<p><a href="{{ route('RemoveItem', $key) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></p>
@@ -52,7 +52,7 @@
 			</div>
 					<div class="row">
 						<div class="shoppingcartTotalPrice">
-							<h3>Totaal: {{ number_format($total, 2) }}</h3>
+							<h3>Totaal: € {{ number_format($total, 2) }}</h3>
 						</div>
 						<div class="shoppingcartPayment">
 							<form method="post" action="{{ route('PurchaseItems') }}">

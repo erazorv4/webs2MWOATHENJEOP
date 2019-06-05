@@ -21,6 +21,9 @@ use App\ShopItemNames;
         @if ($Id !== null)
             @php
                 $product = App\Product::find($Id);
+                $subcategory = App\Category::find($product->category_id);
+                $category = App\Category::find($subcategory->parent_id);
+
             @endphp
 
             <h3><a href="{{URL::route("winkel")}}">Webshop</a> -> {{$product->name}}</h3>
@@ -29,6 +32,7 @@ use App\ShopItemNames;
                 <img src="../img/WebshopImages/{{$product->image}}" style="width: 100%;">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                <p>Categorie: {{$category->name}} / {{$subcategory->name}}</p>
                 <br>
                 <p>€{{$product->price}}</p> <br>
                 <p>{{$product->description}}</p>

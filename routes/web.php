@@ -73,7 +73,7 @@ Route::post('cms/proudctImageUpload',array('as' => 'productImageUpload', 'uses' 
 #----Login & Register Routes----
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', array('as' => 'home', 'uses' => 'HomeController@index'));
 #----Shoppingcart Routes----
 Route::get('/winkelwagen', array('as' => 'winkelwagen', 'uses' => 'WinkelwagenController@index'));
 Route::post('/AddToCart', array('as' => 'AddToCart', 'uses' => 'WinkelwagenController@AddToCart'));

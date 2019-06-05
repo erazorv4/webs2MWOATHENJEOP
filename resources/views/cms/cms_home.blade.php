@@ -16,7 +16,6 @@
         <!--CONTENT IN HERE-->
         <br>
         <h1>Welkom <b>@php echo Auth::user()->name; @endphp</b>!</h1>
-        <h3>Handleiding link: </h3>
     </div>
     <!---->
     </div>
